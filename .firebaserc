@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-projekt-ab1af": {
+      "hosting": {
+        "webpage": [
+          "progmasters"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-projekt-ab1af"
+  }
+}

@@ -1,0 +1,40 @@
+@use 'shared' as *;
+
+h1 {
+  margin-top: 80px;
+  color: whitesmoke;
+}
+
+.container {
+  margin-bottom: 20px;
+}
+
+.background {
+  // height: 100vh;
+  width: 100%;
+  min-height: 1000px;
+  background: url('/assets/images/testt.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  background-attachment: fixed;
+
+}
+
+.custom-card {
+  background-color: #111010;
+  color: white;
+  border: 2px solid rgb(182, 52, 73);
+
+  box-shadow: 0px 10px 13px -7px #e01a1a, 5px 5px 15px 5px rgba(235, 23, 69, 0.7);
+  transition: 0.6s;
+ 
+  &:hover {
+    box-shadow: 0px 10px 13px -7px #e01a1a, 10px 10px 30px 10px rgba(235, 23, 69, 0.7);
+    transition: 0.3s;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+}

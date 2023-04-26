@@ -1,0 +1,7 @@
+<div>
+    <label *ngIf="label" [for]="content" class="form-label">{{label}}</label>
+    <select [id]="content" class="form-select custom-input">
+      <option *ngFor="let course of options" [value]="course.key"  [formControlName]="controllerName" [formGroup]="form"
+      >{{course.displayValue}}</option>
+    </select>
+</div>

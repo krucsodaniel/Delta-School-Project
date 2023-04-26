@@ -1,0 +1,21 @@
+<div class="background">
+  <div class="d-flex align-items-center justify-content-center flex-column custom-height main-text">
+    <app-type-delete [textColor]="'white'" [fontSize]="'80px'" [wordArray]="wordText1" [typingSpeedMilliseconds]="200" [deleteSpeedMilliseconds]="100"></app-type-delete>
+    <app-flash-text [textColor]="'white'" [fontSize]="'50px'" [word]="'PROGmasters!'"></app-flash-text>
+  </div>
+</div>
+<div class="carousel">
+  <ngb-carousel *ngIf="images">
+    <ng-container *ngFor="let image of images">
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper d-flex justify-content-center">
+          <img class="picsum-img" [src]="image.url" alt="Random first slide" />
+        </div>
+        <div class="carousel-caption">
+          <h3 class="title">{{image.title}}</h3>
+          <p class="secondTitle">{{image.secondTitle}}</p>
+        </div>
+      </ng-template>
+    </ng-container>
+  </ngb-carousel>
+</div>

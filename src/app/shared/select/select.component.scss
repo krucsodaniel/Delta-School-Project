@@ -1,0 +1,17 @@
+.custom-input:focus {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 0, 0, 0.45);
+    border: 1px solid #ffffff73;
+
+}
+
+option:checked {
+    background-color: #dc3545;
+}
+
+
+option:hover {
+    //not working
+    background-color: gold;
+    box-shadow: 0 0 0 10px 100px magenta inset;
+   
+}

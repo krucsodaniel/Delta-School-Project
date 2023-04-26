@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="col-12">
+        <table class="table w-100">
+            <thead>
+                <th>Név</th>
+                <th>Titulus</th>
+                <th>Bemutatkozás</th>
+                <th>Elérhetőségek</th>
+                <th>Képzések</th>
+                <th>Kép</th>
+                <th>Szerkesztés</th>
+                <!-- törlés, részletek -->
+            </thead>
+            <tbody>
+                <tr *ngFor="let mentor of mentors">
+                    <td class="col-1">{{mentor.name}}</td>
+                    <td class="col-1">{{mentor.title}}</td>
+                    <td class="col-2">{{mentor.description[0]|slice:0:15}} ...</td>
+                    <td class="col-2">
+                        <p>{{mentor.phone}}</p>
+                        <p>{{mentor.email}}</p>
+                    </td>
+                    <td class="col-1">mit tanít?</td>
+                    <td class="col-1">
+                        <img [src]="mentor.imgURL" [alt]="mentor.name" style="width: 100px;">
+                    </td>
+                    <td class="col-2">
+                        <button class="btn btn-warning" (click)="editMentor(mentor)">Részletek</button>
+                        <button class="btn btn-danger" data-bs-toggle="modal" (click)="chooseMentor(mentor)"
+                            data-bs-target="#deleteModal">Törlés</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal" tabindex="-1" id="deleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Megerősítés</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Biztosan törölni akarja a következő oktatót: {{chosenMentor.name}}?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="deleteMentor()">Törlés</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container col-md-6">
+    <form *ngIf="teacherForm" [formGroup]="teacherForm" class="row g-3" (ngSubmit)="saveMentor()">
+
+        <div class="col-12">
+            <label for="inputName" class="form-label">Név</label>
+            <input type="text" class="form-control" id="inputName" formControlName="name"  (keyup)="setImgName()" />
+        </div>
+
+        <div class="col-12">
+            <label for="inputTitle" class="form-label">Titulus</label>
+            <input type="text" class="form-control" id="inputTitle" formControlName="title" />
+        </div>
+
+        <div class="col-12">
+            <label for="inputDescription" class="form-label">Bemutatkozás</label>
+            <textarea rows="4" class="form-control" style="height: 100px;" id="inputDescription"
+                formControlName="description"></textarea>
+        </div>
+
+        <div class="col-12">
+            <label for="inputPhone" class="form-label">Telefonszám</label>
+            <input type="text" class="form-control" id="inputPhone" formControlName="phone" />
+        </div>
+
+        <div class="col-12">
+            <label for="inputEmail" class="form-label">Email-cím</label>
+            <input type="text" class="form-control" id="inputEmail" formControlName="email" />
+        </div>
+
+        <div class="col-12">
+            <label for="inputImageURL" class="form-label">Kép URL</label>
+            <input type="text" class="form-control" id="inputImageURL" formControlName="imgURL" />
+            <div class="mt-3">
+                <app-pic-upload (imgUrlEmitter)="urlSet($event)" imgFolder="teachers" [imgName]="imgName" ></app-pic-upload>
+            </div>
+        </div>
+
+        <!-- <div class="col-12">
+            <label for="training" class="form-label">Oktatott képzés</label>
+            <select id="training" class="form-select custom-input" formControlName="training">
+                <option *ngFor="let training of trainings" [value]="training.name">{{training.name}}</option>
+            </select>
+        </div> -->
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="teacherForm.invalid">Mentés</button>
+        </div>
+    </form>
+</div>

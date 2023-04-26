@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="col-12">
+        <table class="table w-100">
+            <thead>
+                <th>Név</th>
+                <th>Email</th>
+                <th>Lakcím</th>
+                <th>Telefonszám</th>
+                <th>Képzés</th>
+                <th>Visszatérő diák</th>
+                <th>Törlés</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let applicant of applicants">
+                    <td class="col-2">{{applicant.name}}</td>
+                    <td class="col-2">{{applicant.email}}</td>
+                    <td class="col-2">{{applicant.address}}</td>
+                    <td class="col-2">{{applicant.phoneNumber}}</td>
+                    <td class="col-2">{{applicant.course}}</td>
+                    <td class="col-2">{{applicant.studentStatus}}</td>
+                    <td><button (click)="chooseApplicant(applicant)" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Törlés</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal" tabindex="-1" id="deleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Megerősítés</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Biztosan törölni akarja a következő jelentkezőt: {{chosenApplicant.name}}?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="deleteApplicant()">Törlés</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

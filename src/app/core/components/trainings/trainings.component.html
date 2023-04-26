@@ -1,0 +1,22 @@
+<div class="background pt-3">
+  <div class="d-flex align-items-center justify-content-center flex-column">
+    <h1 class="text-center">Képzéseink</h1>
+    <div class="container d-flex flex-wrap gap-2 justify-content-between mt-4">
+        <div *ngFor="let training of trainings" class="card col-12 col-md-5 col-lg-3 custom-card my-4 p-2">
+            <div class="card-body">
+              <img [src]="training.imageURL" class="card-img-top" [alt]="training.name | slice : 0 : -10">
+              <h5 class="card-title my-2">{{training.name}}</h5>
+              <h6 class="card-subtitle my-2 text-muted">Oktató: {{training.teacher}}</h6>
+              <p class="card-text mt-2 mb-0">Technológiák: </p>
+              <p class="card-text mt-0">{{training.description}}</p>
+              <p *ngIf="getApplicantsNumber(training.name) < training.max" class="card-text mt-1 text-muted">Jelentkezők száma:<br>{{getApplicantsNumber(training.name)}}/{{training.max}}</p>
+              <p *ngIf="getApplicantsNumber(training.name) >= training.max" class="card-text mt-1 text-danger">A képzés megtelt, kérjük kövesse figyelemmel honlapunkat, vagy érdeklődjön elérhetőségeink egyikén!</p>
+              <div class="text-center mt-3">
+                <button class="btn btn-outline-danger" (click)="goToApplication()">Jelentkezés</button>
+              </div>
+            </div>
+          </div>
+    </div>
+    
+  </div>
+</div>

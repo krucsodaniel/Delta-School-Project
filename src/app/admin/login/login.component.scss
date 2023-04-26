@@ -1,0 +1,29 @@
+.custom-input {
+    background-color: #ffffffa6;
+}
+
+.custom-input:focus {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 0, 0, 0.45);
+    border: 1px solid #ffffffa6;
+}
+
+.background {
+    height: 100vh;
+    background: url('/assets/images/testt.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0;
+}
+
+.card {
+    background-color: #ffffff73;
+}
+
+// for better read
+.small {
+    // text-shadow: 1px 1px 2px black;
+    // font-weight: bolder;
+    // text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    text-shadow: 1px 1px 2px red, 0 0 1em black, 0 0 0.2em black;
+}

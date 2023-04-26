@@ -1,0 +1,56 @@
+@use 'shared' as *;
+
+.flash {
+    -webkit-animation-name: move;
+    animation-name: move;
+    animation-duration:6s;
+    animation-iteration-count: infinite;
+    color: $white;
+  }
+  
+  @keyframes move{
+    0% { opacity: 0;}
+    5% { opacity: 1;}
+    10% { opacity: 0;}
+    15% { opacity: 1;}
+    20% { opacity: 0;}
+    25% { opacity: 1;}
+    30% { opacity: 0;}
+    35% { opacity: 1;}
+    40% { opacity: 0;}
+    45% { opacity: 1;}
+    50% { opacity: 0;}
+    55% { opacity: 1;}
+    60% { opacity: 0;}
+    65% { opacity: 1;}
+    70% { opacity: 0;}
+    75% { opacity: 1;}
+    80% { opacity: 0;}
+    85% { opacity: 1;}
+    90% { opacity: 0;}
+    95% { opacity: 1;}
+   }
+
+   @media screen and (max-width: 1120px) {
+    .flash {
+      font-size: 75px !important;
+    }
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .flash {
+      font-size: 55px !important;
+    }
+  } 
+  
+  @media screen and (max-width: 720px) {
+    .flash {
+      font-size: 35px !important;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .flash {
+      font-size: 20px !important;
+    }
+  }

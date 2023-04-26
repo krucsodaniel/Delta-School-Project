@@ -1,0 +1,34 @@
+<div class="position-fixed w-100 sidebar">
+  <div class="d-flex justify-content-center">
+    <div class="d-flex header-container">
+      <div class="header-image-container">
+        <img src="assets/images/logo.png" />
+      </div>
+      <div class="d-md-flex d-none text-end align-items-center">
+        <div class="custom-nav pe-5">
+          <ng-container *ngFor="let navbar of headerData">
+            <div class="nav-item">
+              <a class="nav-link ms-2 me-2" [routerLink]="navbar.routerLink" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ navbar.name }}</a>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="d-md-none d-flex align-items-center mobile-padding">
+        <fa-icon class="cursor-pointer" [icon]="faAlignJustify" size="lg" (click)="openMobilNavbar()"></fa-icon>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-sidebar text-center" [ngClass]="openMobilSlidebar ? 'show-nav' : 'hide-nav'">
+  <div class="sidebar-logo">Progmasters</div>
+  <ng-container *ngFor="let navbar of headerData">
+    <div class="mobile-nav-item">
+      <div class="mobile-nav-link hvr-underline-from-center" [routerLink]="navbar.routerLink" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        {{ navbar.name }}
+      </div>
+    </div>
+  </ng-container>
+  <button class="custom-button btn btn-primary text-center" (click)="openMobilNavbar()">Bezárás</button>
+</div>
+<div class="custom-overlay" [ngClass]="openMobilSlidebar ? 'true-backdrop' : 'false-backdrop'" (click)="openMobilNavbar()"></div>

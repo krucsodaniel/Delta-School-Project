@@ -1,0 +1,96 @@
+@use 'shared' as *;
+
+.background {
+  height: 100vh;
+  width: 100%;
+  min-height: 500px;
+  background: url('/assets/images/testt.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+
+  .custom-height {
+    height: 100vh;
+
+    @media screen and (max-width: 1120px) {
+      app-type-delete {
+        font-size: 10px;
+      }
+      app-flash-text {
+        font-size: 10px;
+      }
+    }
+  }
+  }
+
+
+
+.carousel {
+  .picsum-img-wrapper {
+    width: inherit;
+    background: rgb(50,6,6);
+    background: linear-gradient(5deg, rgba(50,6,6,1) 0%, rgba(80,11,24,1) 14%, rgba(103,13,16,1) 31%, rgba(99,17,17,1) 48%, rgba(69,0,0,1) 67%, rgba(19,2,0,1) 84%, rgba(0,0,0,1) 100%);
+    
+    img {
+      height: 680px;
+      object-fit: cover;
+      margin: 20px 0px;
+      border-radius: 50px;
+    }
+
+    @media screen and (max-width: 1210px) {
+      .picsum-img {
+        height:100%;
+        width:100%
+      }
+    }
+  }
+  
+  .carousel-caption {
+    border-radius: 30px;
+    background-color: #ffffff73;
+    -webkit-backdrop-filter: saturate(180%) blur(5px);
+    backdrop-filter: saturate(180%) blur(5px);
+    color: $black;
+    padding: 8px;
+    right: calc(100% - 75%);
+    left: calc(100% - 75%);
+
+   .title {
+     font-size: 35px;
+   }
+   .secondTitle {
+     font-size: 18px;
+   }
+
+
+   @media screen and (max-width: 600px) {
+    .title {
+      font-size: 30px;
+    }
+    .secondTitle {
+      font-size: 15px;
+    }
+  }
+
+  @media screen and (max-width: 470px) {
+    .title {
+      font-size: 15px;
+    }
+    .secondTitle {
+      font-size: 10px;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .title {
+      font-size: 10px;
+    }
+    .secondTitle {
+      font-size: 8px;
+    }
+  }
+
+}
+}

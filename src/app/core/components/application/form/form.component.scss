@@ -1,0 +1,49 @@
+.header-container {
+  border-radius: 10px;
+  background-color: #ffffff73;
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
+  backdrop-filter: saturate(180%) blur(5px);
+
+  small {
+    text-shadow: 1px 1px 2px red, 0 0 1em black, 0 0 0.2em black;
+  }
+}
+
+.custom-input {
+  background-color: #ffffffa6; 
+
+  &:focus {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 0, 0, 0.45);
+    border: 1px solid #ffffffa6;
+  }
+
+
+}
+
+
+.custom-checkbox {
+  input {
+    background-color: #ffffffa6;
+
+    &:focus {
+      box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 0, 0, 0.45);
+      border: 1px solid #ffffffa6;
+    }
+
+    &:checked:focus {
+      box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+      border: 1px solid #ffffffa6;
+    }
+
+    &:checked {
+      border: 1px solid #ffffffa6;
+      background-color: #dc3545;
+    }
+
+    &:active {
+      background-color:#dc3545;
+    }
+  }
+ 
+
+}

@@ -1,0 +1,32 @@
+<div class="background d-flex flex-column justify-content-center">
+
+    <div class="container col-md-6 card p-3">
+        <form [formGroup]="loginForm" class="m-3">
+    
+            <div *ngIf="email" class="form-floating mb-5 row">
+                <input formControlName="email" class="form-control custom-input" id="email" type="email"
+                    placeholder="Enter your email...">
+                <label for="email">Email address</label>
+                <div *ngIf="email.invalid && email.touched" class="small text-danger">
+                    <span *ngIf="email.errors?.required">An email is required.</span>
+                    <span *ngIf="email.errors?.email">Email is not valid.</span>
+                </div>
+            </div>
+    
+            <div *ngIf="password" class="form-floating my-5 row">
+                <input formControlName="password" class="form-control custom-input" type="password" id="password"
+                    placeholder="Enter your password...">
+                <label for="password">Name</label>
+                <div *ngIf="password.invalid && password.touched" class="small text-danger">A password is
+                    required.</div>
+            </div>
+    
+    
+            <div class="row col-md-3 mx-auto">
+                <button [disabled]="loginForm.invalid" (click)="login()" class="btn btn-danger text-uppercase"
+                    id="loginButton" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+</div>

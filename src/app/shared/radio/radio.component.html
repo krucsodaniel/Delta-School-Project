@@ -1,0 +1,12 @@
+<fieldset>
+    <legend class="col-form-label pt-0">Jártál már nálunk?</legend>
+    <div>
+        <div class="form-check" *ngFor="let status of options">
+            <input class="form-check-input" type="radio" name="status" [id]="status.id" [value]="status.value"
+            [formControlName]="controllerName" [formGroup]="form">
+            <label class="form-check-label" for="newStudent">
+                {{status.label}}
+            </label>
+        </div>
+    </div>
+</fieldset>

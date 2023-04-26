@@ -1,0 +1,83 @@
+<div class="card header-container p-3 mt-3" style="width: 70vw">
+    <form *ngIf="applicationForm" class="row g-3" [formGroup]="applicationForm" (ngSubmit)="saveApplication()">
+        <div class="row mt-3">
+
+            <div class="col-md-6">
+                <label for="name" class="form-label">Név</label>
+                <input type="text" class="form-control custom-input" id="name" formControlName="name">
+                <small *ngIf="applicationForm.get('name')?.invalid && applicationForm.get('name')?.dirty"
+                    class="text-danger">Kérjük, létező nevet adj meg!</small>
+            </div>
+    
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email-cím</label>
+                <input type="email" class="form-control custom-input" id="email" formControlName="email">
+                <small *ngIf="applicationForm.get('email')?.invalid && applicationForm.get('email')?.dirty"
+                    class="text-danger">Kérjük, létező email-címet adj meg!</small>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+
+            <div class="col-md-6">
+                <label for="address" class="form-label">Cím</label>
+                <input type="text" class="form-control custom-input" id="address" formControlName="address"
+                    placeholder="1056 Budapest, Minta u. 3.">
+                <small *ngIf="applicationForm.get('address')?.invalid && applicationForm.get('address')?.dirty"
+                    class="text-danger">Nem adtál meg címet!</small>
+            </div>
+    
+            <div class="col-md-6">
+                <label for="phoneNumber" class="form-label">Telefonszám</label>
+                <input type="text" class="form-control custom-input" id="phoneNumber" formControlName="phoneNumber"
+                    placeholder="+36 30 123 4567">
+                <small *ngIf="applicationForm.get('phoneNumber')?.invalid && applicationForm.get('phoneNumber')?.dirty"
+                    class="text-danger">Kérjük, megfelelő formátumú telefonszámot adj meg! pl. +36 30 123 4567 </small>
+            </div>
+
+        </div>
+
+        <div class="row mt-3">
+
+            <div class="col-md-6 mt-3">
+                <label for="course" class="form-label">Melyik képzésünk érdekel?</label>
+                <select id="course" class="form-select custom-input" formControlName="course">
+                    <option *ngFor="let course of trainings" [value]="course.name">{{course.name}}</option>
+                </select>
+                <small *ngIf="applicationForm.get('course')?.invalid && applicationForm.get('course')?.dirty"
+                    class="text-danger">Kérjük, válassz képzéseink közül! Mind szuper!</small>
+            </div>
+    
+            <fieldset class=" col-md-6 mb-3 custom-checkbox">
+                <legend class="col-form-label col-md-6 pt-0">Jártál már nálunk?</legend>
+                <div class="col-md-6">
+                    <div class="form-check" *ngFor="let status of statusRadioOptions">
+                        <input class="form-check-input" type="radio" name="studentStatus" formControlName="studentStatus" [id]="status.id"
+                            [value]="status.value">
+                        <label class="form-check-label" [for]="status.id">
+                            {{status.label}}
+                        </label>
+                        <small *ngIf="applicationForm.get('studentStatus')?.invalid && applicationForm.get('studentStatus')?.dirty"
+                            class="text-danger">Kérjük, válassz!</small>
+                    </div>
+                </div>
+            </fieldset>
+
+        </div>
+
+        <div class="col-12 mt-0 mb-3">
+            <div class="form-check custom-checkbox">
+                <input class="form-check-input" type="checkbox" id="gdprCheck" formControlName="gdprCheck">
+                <label class="form-check-label" for="gdprCheck">
+                    Elolvastam a PROGmasters Adatkezelési tájékoztatóját és tudomásul vettem az abban közölteket.
+                </label>
+                <small *ngIf="applicationForm.get('gdprCheck')?.invalid && applicationForm.get('gdprCheck')?.dirty" 
+                    class="text-danger">Kérjük, fogadd el adatkezelési tájékoztatónkat!
+                </small>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center mt-0">
+            <button type="submit" class="btn btn-danger" [disabled]="applicationForm.invalid">Jelentkezés</button>
+        </div>
+    </form>
+</div>

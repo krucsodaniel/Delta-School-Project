@@ -1,0 +1,20 @@
+<div class="container d-flex align-items-center justify-content-center our-teachers-text-container">
+    <h2>Tanáraink</h2>
+</div>
+
+<div class="container teachers-container">
+    <div *ngIf="mentorArray" class="row">
+
+        <div *ngFor="let teacher of mentorArray; let i = index" class="col-md-4 p-3 my-3">
+            <img (click)="goToMentor(teacher?.id)" [src]="teacher.imgURL" [ngClass]="getClass(i, mentorArray)"
+                [alt]="teacher.name">
+            <div class="card teacher-card">
+                <div class="card-body">
+                    <h5 class="card-title d-flex justify-content-center">{{teacher.name}}</h5>
+                    <h6 class="d-flex justify-content-center">{{teacher.title}}</h6>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

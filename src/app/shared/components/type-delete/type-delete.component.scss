@@ -1,0 +1,40 @@
+@use 'shared' as *;
+
+.blink {
+    border-right-style: solid;
+    animation: 1s blink infinity;
+  }
+  
+  @keyframes blink {
+    to {
+      opacity: 0;
+    }
+}
+
+
+@media screen and (max-width: 1120px) {
+  .main-text {
+    font-size: 75px !important;
+  }
+  .flash {
+    font-size: 75px !important;
+}
+}
+
+@media screen and (max-width: 1000px) {
+  .main-text {
+    font-size: 55px !important;
+  }
+} 
+
+@media screen and (max-width: 720px) {
+  .main-text {
+    font-size: 35px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-text {
+    font-size: 20px !important;
+  }
+}

@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="col-12">
+        <table class="table w-100">
+            <thead>
+                <th>Képzés</th>
+                <th>Leírás</th>
+                <th>Oktató</th>
+                <th>Max létszám</th>
+                <th>Jelentkezők száma</th>
+                <th>Törlés</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let training of trainings">
+                    <td class="col-2">{{training.name}}</td>
+                    <td class="col-6">{{training.description}}</td>
+                    <td class="col-2">{{training.teacher}}</td>
+                    <td class="col-1">{{training.max}}</td>
+                    <td class="col-1">{{getApplicantsNumber(training.name)}}</td>
+                    <td><button (click)="chooseTraining(training)" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal">Törlés</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal" tabindex="-1" id="deleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Megerősítés</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Biztosan törölni akarja a következő képzést: {{chosenTraining.name}}?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        (click)="deleteTraining()">Törlés</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container align-items-center">
+    <div class="col-12">
+        <form *ngIf="trainingForm" [formGroup]="trainingForm" class="row g-3" (ngSubmit)="saveTraining()">
+            
+            <div class="col-12">
+                <label for="inputName" class="form-label">Képzés</label>
+                <input type="text" class="form-control" id="inputName" formControlName="name" (keyup)="setImgName()" />
+            </div>
+            
+            <div class="col-12">
+                <label for="inputDescription" class="form-label">Leírás</label>
+                <textarea rows="4" class="form-control" style="height: 100px;" id="inputDescription"
+                formControlName="description"></textarea>
+            </div>
+            
+            <div class="col-12">
+                <label for="inputTeacher" class="form-label">Oktató</label>
+                <input type="text" class="form-control" id="inputTeacher" formControlName="teacher" />
+            </div>
+            
+            <div class="col-12">
+                <label for="inputImageURL" class="form-label">Kép URL</label>
+                <input type="text" class="form-control" id="inputImageURL" formControlName="imageURL" />
+                <div class="mt-3">
+                    <app-pic-upload (imgUrlEmitter)="urlSet($event)" imgFolder="trainings" [imgName]="imgName"></app-pic-upload>
+                </div>
+            </div>
+            
+            <div class="col-12 mb-3">
+                <button type="submit" class="btn btn-primary">Mentés</button>
+            </div>
+        </form>
+    </div>
+        
+</div>
